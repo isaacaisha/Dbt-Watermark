@@ -13,7 +13,7 @@ modified_image_path = None
 
 @app.route('/favicon.ico')
 def favicon():
-    return app.send_static_file('img/favicon.ico')
+    return app.send_static_file('images/favicon.ico')
 
 
 @app.route('/')
