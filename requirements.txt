@@ -12,10 +12,6 @@ Pillow==10.0.0
 proxy-tools==0.1.0
 pyinstaller==5.13.0
 pyinstaller-hooks-contrib==2023.6
-pyobjc-core==9.2
-pyobjc-framework-Cocoa==9.2
-pyobjc-framework-Security==9.2
-pyobjc-framework-WebKit==9.2
 pywebview==4.2.2
 ttkthemes==3.2.2
 typing_extensions==4.7.1
