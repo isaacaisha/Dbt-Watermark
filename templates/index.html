@@ -1,0 +1,86 @@
+{% include 'header.html' %}
+
+<div class="container">
+
+    <div class="left-pane">
+        <h2 class="subtitle">Add Watermark Text</h2>
+        <p>👇🏿</p>
+        <form action="{{ url_for('add_watermark_text') }}" method="POST">
+            <button type="submit" class="btn btn-primary btn-block btn-large">Click to Add Text</button><hr>
+            <input type="text" name="watermark_text" placeholder="Enter the Watermark text" required>
+        </form>
+        {% if modified_image %}
+            <img src="{{ url_for('static', filename='uploads/' + modified_image) }}" alt="Chosen Image" class="chosen-image large-image">
+        {% endif %}
+    </div>
+
+    <div class="center-pane">
+        <h2 class="subtitle">Click to choose a picture</h2>
+        <p>👇🏿</p>
+        <form action="{{ url_for('choose_image') }}" method="POST" enctype="multipart/form-data">
+            <!-- Hidden file input -->
+            <input type="file" name="image_file" accept="image/*" required style="display: none;" id="imageInput">
+
+            <!-- Custom button to trigger file input -->
+            <label for="imageInput" class="btn btn-primary btn-block btn-large">Choose Image</label>
+
+            <!-- Submit button to handle the form submission (hidden by default) -->
+            <button type="submit" style="display: none;"></button>
+        </form>
+        {% if chosen_image %}
+            <img src="{{ url_for('static', filename='uploads/chosen_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
+        {% endif %}
+    </div>
+
+    <div class="right-pane">
+        <h2 class="subtitle">Add Watermark Logo</h2>
+        <p>👇🏿</p>
+        <form action="{{ url_for('add_watermark_logo') }}" method="POST" enctype="multipart/form-data">
+            <!-- Hidden file input -->
+            <input type="file" name="logo_file" accept="image/*" required style="display: none;" id="logoInput">
+
+            <!-- Custom button to trigger file input -->
+            <label for="logoInput" class="btn btn-primary btn-block btn-large">Choose Logo</label>
+
+            <!-- Submit button to handle the form submission (hidden by default) -->
+            <button type="submit" style="display: none;"></button>
+        </form>
+        {% if logo_image %}
+            <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Watermark Logo" class="chosen-image large-image">
+        {% endif %}
+    </div>
+
+        <!--{% if modified_image %}
+        <div class="modified-image-container">
+            <h2 class="subtitle">Modified Image</h2>
+            <img src="{{ url_for('static', filename='uploads/' + modified_image) }}" alt="Modified Image" class="chosen-image large-image">
+            <form action="{{ url_for('save') }}" method="POST">
+                <input type="hidden" name="image_path" value="{{ modified_image }}">
+                <button type="submit">Save Image</button>
+            </form>
+        </div>
+        {% endif %}-->
+
+</div>
+
+
+<script>
+    // Get the file input elements
+    const imageInput = document.getElementById('imageInput');
+    const logoInput = document.getElementById('logoInput');
+
+    // Add an event listener for the change event on the file inputs
+    imageInput.addEventListener('change', function() {
+        // Submit the image form automatically when an image is selected
+        const form = document.querySelector('form[action="{{ url_for('choose_image') }}"]');
+        form.submit();
+    });
+
+    logoInput.addEventListener('change', function() {
+        // Submit the logo form automatically when an image is selected
+        const form = document.querySelector('form[action="{{ url_for('add_watermark_logo') }}"]');
+        form.submit();
+    });
+</script>
+
+{% include 'footer.html' %}
