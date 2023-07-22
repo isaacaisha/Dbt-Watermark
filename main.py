@@ -181,4 +181,8 @@ def save():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')
+    # Get the port number from the environment variable (default to 5000 if not set)
+    port = int(os.environ.get('PORT', 5000))
+
+    # Run the Flask app on the specified port and bind to all interfaces
+    app.run(debug=True, host='0.0.0.0', port=port)
