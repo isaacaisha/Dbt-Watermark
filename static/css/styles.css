@@ -1,6 +1,12 @@
 h1 {
     color: #EB33FF;
+    font-family: 'Cardo'
 }
+
+h3 {
+    margin-top: 1rem;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -23,9 +29,10 @@ body {
     margin-top: 50px;
 }
 
-.left-pane,
-.center-pane,
-.right-pane {
+.first-pane,
+.second-pane,
+.third-pane,
+.fourth-pane {
     width: 30%;
 }
 
@@ -49,36 +56,33 @@ img {
     margin-top: 20px;
 }
 
-div .center-pane {
-    margin: 0 5%;
+div .first-pane,
+div .second-pane,
+div .third-pane,
+div .fourth-pane {
+    margin: 0;
+    width: 91%;
 }
 
 /* Override conflicting styles for the chosen image */
-.container .center-pane img.chosen-image {
+.container .first-pane img.chosen-image,
+.container .second-pane img.chosen-image,
+.container .third-pane img.chosen-image
+.container .fourth-pane img.chosen-image {
     max-width: none; /* Remove the maximum width to allow the image to expand */
     width: 100%; /* Set the width to 100% to make the image fill the container */
     height: auto; /* Automatically adjust the height to maintain the aspect ratio */
-    margin: 19px; /* Add margin to give the image some spacing */
     border: 1px solid white; /* Optional: Add a border to make the image stand out */
     padding: 1rem;
 }
 
-.container .right-pane img.chosen-image {
+.container .fifth-pane img.chosen-image {
     max-width: none; /* Remove the maximum width to allow the image to expand */
     width: 100%; /* Set the width to 100% to make the image fill the container */
     height: auto; /* Automatically adjust the height to maintain the aspect ratio */
-    margin: 19px; /* Add margin to give the image some spacing */
     border: 1px solid white; /* Optional: Add a border to make the image stand out */
     padding: 1rem;
-}
-
-.container .left-pane img.chosen-image {
-    max-width: none; /* Remove the maximum width to allow the image to expand */
-    width: 100%; /* Set the width to 100% to make the image fill the container */
-    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
-    margin: 19px; /* Add margin to give the image some spacing */
-    border: 1px solid white; /* Optional: Add a border to make the image stand out */
-    padding: 1rem;
+    margin-bottom: 3rem;
 }
 
 .custom-file-upload input[type="file"] {
@@ -99,11 +103,12 @@ div .center-pane {
 
 /* Add or modify the following styles for the input element */
 input[type="text"], input[type="file"], input[type="image"], input[type="checkbox"], input[type="radio"] {
+    font-family: 'Cardo';
     /* Adjust the padding to make the input field smaller */
-    padding:9px 5px;
+    padding:19px 37px;
 
     /* Adjust the font size to make the text inside the input field smaller */
-    font-size: 7px;
+    font-size: 19px;
 
     /* Optionally, you can set a fixed width to make the input field smaller */
     /* width: 150px; */

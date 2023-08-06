@@ -1,20 +1,9 @@
 {% include 'header.html' %}
 
-<div class="container">
+<div class="">
 
-    <div class="left-pane">
-        <h2 class="subtitle">Add Watermark Text</h2>
-        <p>👇🏿</p>
-        <form action="{{ url_for('add_watermark_text') }}" method="POST">
-            <button type="submit" class="btn btn-primary btn-block btn-large">Click to Add Text</button><hr>
-            <input type="text" name="watermark_text" placeholder="Enter the Watermark text" required>
-        </form>
-        {% if modified_image %}
-            <img src="{{ url_for('static', filename='uploads/' + modified_image) }}" alt="Chosen Image" class="chosen-image large-image">
-        {% endif %}
-    </div>
-
-    <div class="center-pane">
+    <div class="container">
+        <div class="first-pane">
         <h2 class="subtitle">Click to choose a picture</h2>
         <p>👇🏿</p>
         <form action="{{ url_for('choose_image') }}" method="POST" enctype="multipart/form-data">
@@ -30,9 +19,25 @@
         {% if chosen_image %}
             <img src="{{ url_for('static', filename='uploads/chosen_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
         {% endif %}
+        </div>
     </div>
 
-    <div class="right-pane">
+    <div class="container">
+        <div class="second-pane">
+        <h2 class="subtitle">Add Watermark Text</h2>
+        <p>👇🏿</p>
+        <form action="{{ url_for('add_watermark_text') }}" method="POST">
+            <button type="submit" class="btn btn-primary btn-block btn-large">Click to Add Text</button><hr>
+            <input type="text" name="watermark_text" placeholder="Enter the Watermark text" required>
+        </form>
+        {% if modified_image %}
+            <img src="{{ url_for('static', filename='uploads/' + modified_image) }}" alt="Chosen Image" class="chosen-image large-image">
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="third-pane">
         <h2 class="subtitle">Add Watermark Logo</h2>
         <p>👇🏿</p>
         <form action="{{ url_for('add_watermark_logo') }}" method="POST" enctype="multipart/form-data">
@@ -48,7 +53,25 @@
         {% if logo_image %}
             <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Watermark Logo" class="chosen-image large-image">
         {% endif %}
+        </div>
     </div>
+
+
+    <div class="container">
+        <div class="fourth-pane">
+            <h2 class="subtitle">Add Watermark-text & Logo</h2>
+            <form action="{{ url_for('add_watermark_text_and_logo') }}" method="POST">
+                <button type="submit" class="btn btn-primary btn-block btn-large">Click to Add Text and Logo</button><hr>
+                <input type="text" name="watermark_text" placeholder="Enter the Watermark text" required>
+                {% if modified_image %}
+                    <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+</div>
+
 
         <!--{% if modified_image %}
         <div class="modified-image-container">
@@ -61,7 +84,6 @@
         </div>
         {% endif %}-->
 
-</div>
 
 
 <script>

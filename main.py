@@ -71,7 +71,7 @@ def add_watermark_text():
 
         # Use the custom font from the "fonts" folder
         font_path = 'static/fonts/arial.ttf'
-        font_size = 37
+        font_size = 33
 
         # Use try-except block to handle any errors related to font loading
         try:
@@ -138,7 +138,7 @@ def handle_watermark_logo():
 
     if logo_image_path:
         img = Image.open(chosen_image_path)
-        draw = ImageDraw.Draw(img)
+        #draw = ImageDraw.Draw(img)
 
         # Load the watermark logo image
         logo_img = Image.open(logo_image_path)
@@ -149,7 +149,7 @@ def handle_watermark_logo():
         # Resize the watermark logo while maintaining its aspect ratio
         logo_img.thumbnail(desired_logo_size)
 
-        # Calculate the position for the watermark logo at the top left corner
+        # Calculate the position for the watermark logo in the top left corner
         logo_x = 10
         logo_y = 10
 
@@ -166,6 +166,44 @@ def handle_watermark_logo():
         img.save(modified_image_path)
         # Store modified_image_path in session for persistence
         session['modified_image_path'] = modified_image_path
+
+
+@app.route('/add_watermark_text_and_logo', methods=['POST'])
+def add_watermark_text_and_logo():
+    global chosen_image_path, logo_image_path, modified_image_path
+
+    watermark_text = request.form['watermark_text']
+    if watermark_text:
+        # Retrieve the modified image with the logo from the session
+        modified_image_path = session.get('modified_image_path')
+
+        if modified_image_path:
+            img = Image.open(modified_image_path)
+            draw = ImageDraw.Draw(img)
+
+            # Load the custom font for the watermark text
+            font_path = 'static/fonts/arial.ttf'
+            font_size = 33
+            try:
+                font = ImageFont.truetype(font_path, font_size)
+
+                # Calculate text position and add watermark text
+                text_bbox = draw.textbbox((0, 0), watermark_text, font=font)
+                text_width = text_bbox[2] - text_bbox[0]
+                text_height = text_bbox[3] - text_bbox[1]
+                x = img.width - text_width - 10
+                y = img.height - text_height - 10
+                draw.text((x, y), watermark_text, fill='crimson', font=font)
+
+            except IOError:
+                # Use a default font if the custom font cannot be loaded
+                pass
+
+            # Save the modified image with watermark text
+            img.save(modified_image_path)
+
+    return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
+                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR)
 
 
 @app.route('/save', methods=['POST'])
