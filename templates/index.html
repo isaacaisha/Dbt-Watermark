@@ -79,7 +79,7 @@
                 <input type="hidden" name="image_path" value="{{ modified_image }}">
                 <button type="submit">Click to Save Image 👌🏿😎💪🏿</button>
             </form>
-            {% if modified_image_text_and_logo %}
+            {% if modified_image_text_and_logo or logo_image %}
                 <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
             {% endif %}
         </div>
