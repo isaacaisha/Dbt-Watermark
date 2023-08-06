@@ -1,10 +1,10 @@
 {% include 'header.html' %}
 
-<div class="">
+<div class="container-fluid">
 
     <div class="container">
         <div class="first-pane">
-        <h2 class="subtitle">Click to choose a picture</h2>
+        <h2 class="subtitle top">Click to choose a picture</h2>
         <p>👇🏿</p>
         <form action="{{ url_for('choose_image') }}" method="POST" enctype="multipart/form-data">
             <!-- Hidden file input -->
@@ -60,30 +60,32 @@
     <div class="container">
         <div class="fourth-pane">
             <h2 class="subtitle">Add Watermark-text & Logo</h2>
+            <p>👇🏿</p>
             <form action="{{ url_for('add_watermark_text_and_logo') }}" method="POST">
-                <button type="submit" class="btn btn-primary btn-block btn-large">Click to Add Text and Logo</button><hr>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Click to Add Text & Logo</button><hr>
                 <input type="text" name="watermark_text" placeholder="Enter the Watermark text" required>
-                {% if modified_image %}
-                    <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
-                {% endif %}
             </form>
+            {% if modified_image_text_and_logo %}
+                <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="fifth-pane">
+            <h2 class="subtitle">Watermark Result Image</h2>
+            <p>👇🏿</p>
+            <form action="{{ url_for('save') }}" method="POST">
+                <input type="hidden" name="image_path" value="{{ modified_image }}">
+                <button type="submit">Click to Save Image 👌🏿😎💪🏿</button>
+            </form>
+            {% if modified_image_text_and_logo %}
+                <img src="{{ url_for('static', filename='/uploads/modified_image.png') }}" alt="Chosen Image" class="chosen-image large-image">
+            {% endif %}
         </div>
     </div>
 
 </div>
-
-
-        <!--{% if modified_image %}
-        <div class="modified-image-container">
-            <h2 class="subtitle">Modified Image</h2>
-            <img src="{{ url_for('static', filename='uploads/' + modified_image) }}" alt="Modified Image" class="chosen-image large-image">
-            <form action="{{ url_for('save') }}" method="POST">
-                <input type="hidden" name="image_path" value="{{ modified_image }}">
-                <button type="submit">Save Image</button>
-            </form>
-        </div>
-        {% endif %}-->
-
 
 
 <script>

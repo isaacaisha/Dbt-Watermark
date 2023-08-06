@@ -1,6 +1,11 @@
 h1 {
     color: #EB33FF;
-    font-family: 'Cardo'
+    font-family: 'Cardo';
+    font-size: 2.5rem;
+}
+
+h2 {
+    margin-top: 3rem;
 }
 
 h3 {
@@ -23,22 +28,16 @@ body {
     font-size: 24px;
 }
 
+.top {
+    margin-top: 0;
+}
+
 .container {
     display: flex;
     justify-content: space-around;
     margin-top: 50px;
 }
 
-.first-pane,
-.second-pane,
-.third-pane,
-.fourth-pane {
-    width: 30%;
-}
-
-.modified-image-container {
-    margin-top: 50px;
-}
 
 button {
     background-color: #4CAF50;
@@ -56,18 +55,35 @@ img {
     margin-top: 20px;
 }
 
-div .first-pane,
-div .second-pane,
-div .third-pane,
-div .fourth-pane {
-    margin: 0;
-    width: 91%;
+div .first-pane {
+    margin-top: 0;
 }
 
 /* Override conflicting styles for the chosen image */
-.container .first-pane img.chosen-image,
-.container .second-pane img.chosen-image,
-.container .third-pane img.chosen-image
+.container .first-pane img.chosen-image {
+    max-width: none; /* Remove the maximum width to allow the image to expand */
+    width: 100%; /* Set the width to 100% to make the image fill the container */
+    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+    border: 1px solid white; /* Optional: Add a border to make the image stand out */
+    padding: 1rem;
+}
+
+.container .second-pane img.chosen-image {
+    max-width: none; /* Remove the maximum width to allow the image to expand */
+    width: 100%; /* Set the width to 100% to make the image fill the container */
+    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+    border: 1px solid white; /* Optional: Add a border to make the image stand out */
+    padding: 1rem;
+}
+
+.container .third-pane img.chosen-image {
+    max-width: none; /* Remove the maximum width to allow the image to expand */
+    width: 100%; /* Set the width to 100% to make the image fill the container */
+    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+    border: 1px solid white; /* Optional: Add a border to make the image stand out */
+    padding: 1rem;
+}
+
 .container .fourth-pane img.chosen-image {
     max-width: none; /* Remove the maximum width to allow the image to expand */
     width: 100%; /* Set the width to 100% to make the image fill the container */
@@ -82,7 +98,6 @@ div .fourth-pane {
     height: auto; /* Automatically adjust the height to maintain the aspect ratio */
     border: 1px solid white; /* Optional: Add a border to make the image stand out */
     padding: 1rem;
-    margin-bottom: 3rem;
 }
 
 .custom-file-upload input[type="file"] {
@@ -105,7 +120,7 @@ div .fourth-pane {
 input[type="text"], input[type="file"], input[type="image"], input[type="checkbox"], input[type="radio"] {
     font-family: 'Cardo';
     /* Adjust the padding to make the input field smaller */
-    padding:19px 37px;
+    padding:19px 21px;
 
     /* Adjust the font size to make the text inside the input field smaller */
     font-size: 19px;
@@ -114,8 +129,16 @@ input[type="text"], input[type="file"], input[type="image"], input[type="checkbo
     /* width: 150px; */
 }
 
+.saying {
+    margin-bottom: 1rem;
+}
+
 .fa-inverse {
     background-color: greenyellow;
     border-radius: 91%;
     color: purple;
+}
+
+.copyright {
+       margin-bottom: 1rem;
 }

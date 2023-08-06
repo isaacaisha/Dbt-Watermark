@@ -57,7 +57,8 @@ def choose_image():
         modified_image_path = session['modified_image_path']
 
     return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
-                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR)
+                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR,
+                           date=current_time, year=current_year)
 
 
 @app.route('/add_watermark_text', methods=['POST'])
@@ -104,7 +105,8 @@ def add_watermark_text():
             pass
 
     return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
-                           modified_image=modified_image_filename, BACKGROUND_COLOR=BACKGROUND_COLOR)
+                           modified_image=modified_image_filename, BACKGROUND_COLOR=BACKGROUND_COLOR,
+                           date=current_time, year=current_year)
 
 
 def generate_modified_image_filename():
@@ -130,7 +132,8 @@ def add_watermark_logo():
         modified_image_path = session['modified_image_path']
 
     return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
-                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR)
+                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR,
+                           date=current_time, year=current_year)
 
 
 def handle_watermark_logo():
@@ -138,7 +141,6 @@ def handle_watermark_logo():
 
     if logo_image_path:
         img = Image.open(chosen_image_path)
-        #draw = ImageDraw.Draw(img)
 
         # Load the watermark logo image
         logo_img = Image.open(logo_image_path)
@@ -203,7 +205,8 @@ def add_watermark_text_and_logo():
             img.save(modified_image_path)
 
     return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
-                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR)
+                           modified_image_text_and_logo=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR,
+                           date=current_time, year=current_year)
 
 
 @app.route('/save', methods=['POST'])
@@ -225,7 +228,8 @@ def save():
             session.pop('modified_image_path', None)
 
     return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
-                           modified_image=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR)
+                           modified_image_text_and_logo=modified_image_path, BACKGROUND_COLOR=BACKGROUND_COLOR,
+                           date=current_time, year=current_year)
 
 
 if __name__ == "__main__":
