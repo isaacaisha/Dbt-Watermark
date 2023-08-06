@@ -108,3 +108,9 @@ input[type="text"], input[type="file"], input[type="image"], input[type="checkbo
     /* Optionally, you can set a fixed width to make the input field smaller */
     /* width: 150px; */
 }
+
+.fa-inverse {
+    background-color: greenyellow;
+    border-radius: 91%;
+    color: purple;
+}

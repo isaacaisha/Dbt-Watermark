@@ -13,6 +13,7 @@ class WatermarkInterface:
         self.window = Tk()
         self.window.title('WAT€RMARK')
         self.window.config(padx=19, pady=19, bg=BACKGROUND_COLOR)
+        # self.window.geometry("1400x805")
 
         # Set the theme using ttkthemes
         self.style = ThemedStyle(self.window)

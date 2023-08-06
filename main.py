@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, session
 from PIL import Image, ImageDraw, ImageFont
 import os
+import time
+from datetime import datetime
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -9,6 +12,13 @@ BACKGROUND_COLOR = 'black'
 chosen_image_path = None
 logo_image_path = None
 modified_image_path = None
+
+time_sec = time.localtime()
+current_year = time_sec.tm_year
+# getting the current date and time
+current_datetime = datetime.now()
+# getting the time from the current date and time in the given format
+current_time = current_datetime.strftime("%a %d %B")
 
 
 @app.route('/favicon.ico')
@@ -23,7 +33,7 @@ def home():
     session.pop('logo_image_path', None)
     session.pop('modified_image_path', None)
     return render_template("index.html", chosen_image=chosen_image_path, logo_image=logo_image_path,
-                           BACKGROUND_COLOR=BACKGROUND_COLOR)
+                           BACKGROUND_COLOR=BACKGROUND_COLOR, date=current_time, year=current_year)
 
 
 @app.route('/choose_image', methods=['POST'])
